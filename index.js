@@ -1,12 +1,11 @@
 var express = require('express');
-var mysql = require('mysql');
 var app = express();
 var server = require('http').createServer(app);
 var io = require('socket.io').listen(server);
 users = [];
 connections = [];
 
-server.listen(40001);
+server.listen(process.env.PORT || 3000);
 console.log("server started");
 
 app.get('/',function(req,res){
