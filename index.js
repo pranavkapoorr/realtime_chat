@@ -5,7 +5,7 @@ var io = require('socket.io').listen(server);
 users = [];
 connections = [];
 
-server.listen(process.env.PORT || 3000);
+server.listen(process.env.PORT || 3004);
 console.log("server started");
 
 app.get('/',function(req,res){
@@ -20,6 +20,7 @@ io.sockets.on('connection',function(socket){
         users.splice(users.indexOf(socket.username),1);
         connections.splice(connections.indexOf(socket),1);
         console.log("Disconnected: $s sockets connected",connections.length);
+        updateUsers();
     });
 
     socket.on('send message',function(data){

@@ -49,6 +49,11 @@
                         <div id="chat">
                             <input disabled type="text" id="usernameX" class="form-control" placeholder="Enter name...">
                             <br>
+                            <div  style="background-color: silver">
+                                <h5 class="text-center">Online Users</h5>
+                                <ul id="onlinePanel"></ul>
+                            </div>
+                            <br/>
                             <div class="card">
                                 <div id="messages" class="card-block">
         
@@ -70,6 +75,7 @@
                 var $username = $('#username');
                 var $loginPanel = $('#loginPanel');
                 var $mainPanel = $('#mainPanel');
+                var $onlinePanel = $('#onlinePanel');
                 
                 var newUserFunc = function(event){
                                     event.preventDefault();
@@ -98,9 +104,13 @@
                 socket.on('new message',function(data){
                     $messages.append('<Strong>'+data.username+'</Strong>: '+data.msg + '<br/>');
                 });
-                /*socket.on('new user',function(data){
-                    $messages.append(data.msg + '<br/>');
-                });*/
+                socket.on('new user',function(data){
+                    var html = '';
+                    for(i = 0;i<data.length;i++){
+                        html += '<li>'+ data[i]+'</li>';
+                    }
+                    $onlinePanel.html(html);
+                });
             });
         </script>
      </body>
