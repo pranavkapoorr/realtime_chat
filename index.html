@@ -13,11 +13,17 @@
                 body{
                     margin-top: 100px
                 }
+                ul {
+                    list-style: none;
+                }
                 #loginPanel{
                     margin-top: 50px
                 }
                 #login{
                     margin: 20px 100px
+                }
+                #onlinepanel{
+                    padding: 1px;
                 }
                 #mainPanel{
                     display: none;
@@ -25,7 +31,15 @@
                 #messages{
                     height:300px;
                     overflow:auto;
-                    }
+                }
+                #chatarea{
+                    padding-top: 1vh;
+                    padding-bottom: 1vh;
+                    display: grid;
+                    grid-gap: 0px;
+                    grid-template-columns: min-content 1fr/*repeat(2, 1fr)*/;
+                }
+
             </style>
         </head>
         <body>
@@ -48,18 +62,19 @@
                     <div id="mainPanel" class="col-md-6 offset-md-3 col-sm-12">
                         <div id="chat">
                             <input disabled type="text" id="usernameX" class="form-control" placeholder="Enter name...">
-                            <br>
-                            <div  style="background-color: silver">
-                                <h5 class="text-center">Online Users</h5>
-                                <ul id="onlinePanel"></ul>
-                            </div>
-                            <br/>
-                            <div class="card">
-                                <div id="messages" class="card-block">
-        
+                            
+                            <div id="chatarea">
+                                <div  style="background-color: #f4f4f4">
+                                    <h6 class="text-center">Online Users</h6>
+                                    <ul id="onlinePanel"></ul>
+                                </div>
+                                <div class="card">
+                                    <div id="messages" class="card-block">
+            
+                                    </div>
                                 </div>
                             </div>
-                            <br>
+                        
                             <textarea id="message" class="form-control" placeholder="Enter message..."></textarea>
                         </div>
                     </div>
